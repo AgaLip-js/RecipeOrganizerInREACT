@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
@@ -62,7 +62,7 @@ const SearchIcon = {
   fontSize: "18px",
 };
 
-const Input = (props) => {
+const SearchInput = (props) => {
   return (
     <StyledInputContainer>
       <StyledInputType placeholder={props.placeholder} />
@@ -73,4 +73,4 @@ const Input = (props) => {
   );
 };
 
-export default Input;
+export default SearchInput;

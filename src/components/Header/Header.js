@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import Input from "./atoms/Input";
-import Button from "./atoms/Button";
+import SearchInput from "../atoms/SearchInput/SearchInput";
+import Button from "../atoms/Button/Button";
+import { useDispatch } from "react-redux";
+import { openModal } from "../../actions";
 
 const StyledHomeContainer = styled.div`
   float: right;
@@ -16,11 +18,16 @@ const StyledHomePanel = styled.div`
 `;
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const handleAddClick = () => {
+    dispatch(openModal());
+  };
   return (
     <StyledHomeContainer>
       <StyledHomePanel>
-        <Input placeholder="Wyszukaj przepis" type="search" />
-        <Button>Dodaj przepis</Button>
+        <SearchInput placeholder="Wyszukaj przepis" type="search" />
+        <Button onClick={handleAddClick}>Dodaj przepis</Button>
       </StyledHomePanel>
     </StyledHomeContainer>
   );

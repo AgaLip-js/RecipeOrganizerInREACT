@@ -1,12 +1,12 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faClock,
   faBookOpen,
   faUserFriends,
 } from "@fortawesome/free-solid-svg-icons";
-import Button from "../Button";
+import Button from "../Button/Button";
 import "./RecipeCard.css";
 
 const StyledRecipeTitle = styled.h2`
@@ -47,25 +47,30 @@ const StyledAccount = styled.p`
   grid-column: 1/3;
   grid-row-start: 2;
 `;
-const RecipeCardInfo = () => {
+const RecipeCardInfo = ({
+  ingredientsQuantity,
+  portion,
+  preparingTime,
+  title,
+}) => {
   return (
     <div className="RecipeCardInfo">
-      <StyledRecipeTitle> Przepis 1 </StyledRecipeTitle>
+      <StyledRecipeTitle> {title} </StyledRecipeTitle>
       <StyledOpenTable>
         <StyledInfoTable>
           <StyledIconContainer>
             <FontAwesomeIcon icon={faClock} />
-            <StyledValue>20</StyledValue>
+            <StyledValue>{preparingTime}</StyledValue>
             <StyledAccount>Minuty</StyledAccount>
           </StyledIconContainer>
           <StyledIconContainer>
             <FontAwesomeIcon icon={faBookOpen} />
-            <StyledValue>5</StyledValue>
+            <StyledValue>{ingredientsQuantity}</StyledValue>
             <StyledAccount>Składniki</StyledAccount>
           </StyledIconContainer>
           <StyledIconContainer>
             <FontAwesomeIcon icon={faUserFriends} />
-            <StyledValue>5</StyledValue>
+            <StyledValue>{portion}</StyledValue>
             <StyledAccount>Porcje</StyledAccount>
           </StyledIconContainer>
         </StyledInfoTable>

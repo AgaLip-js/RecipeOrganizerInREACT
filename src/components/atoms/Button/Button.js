@@ -1,6 +1,7 @@
+import React from "react";
 import styled from "styled-components";
 
-const Button = styled.button`
+const StyledButton = styled.button`
   cursor: pointer;
   text-transform: uppercase;
   height: 30px;
@@ -26,4 +27,8 @@ const Button = styled.button`
     position: relative;
   }
 `;
+const Button = ({ children, ...props }) => {
+  return <StyledButton {...props}>{children}</StyledButton>;
+};
+
 export default Button;

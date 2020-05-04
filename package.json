@@ -13,6 +13,8 @@
     "@testing-library/user-event": "^7.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-file-reader": "^1.1.4",
+    "react-id-generator": "^3.0.0",
     "react-redux": "^7.2.0",
     "react-responsive-carousel": "^3.2.4",
     "react-router": "^5.1.2",
@@ -23,7 +25,8 @@
     "redux-devtools": "^3.5.0",
     "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",
-    "styled-components": "^5.1.0"
+    "styled-components": "^5.1.0",
+    "uuid": "^8.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

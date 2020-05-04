@@ -1,17 +1,16 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Carousel.css";
-import recipe1 from "../../assets/pictures/recipe1.jpg";
-import recipe2 from "../../assets/pictures/recipe2.jpg";
-import recipe3 from "../../assets/pictures/recipe3.jpg";
-import recipe4 from "../../assets/pictures/recipe4.jpg";
-import recipe5 from "../../assets/pictures/recipe5.jpg";
-import recipe6 from "../../assets/pictures/recipe6.jpg";
-import styled, { css } from "styled-components";
+import recipe1 from "../../../assets/pictures/recipe1.jpg";
+import recipe2 from "../../../assets/pictures/recipe2.jpg";
+import recipe3 from "../../../assets/pictures/recipe8.jpg";
+import recipe4 from "../../../assets/pictures/recipe4.jpg";
+import recipe5 from "../../../assets/pictures/recipe5.jpg";
+import recipe6 from "../../../assets/pictures/recipe6.jpg";
+import styled from "styled-components";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -20,8 +19,9 @@ function SampleNextArrow(props) {
       className={className}
       onClick={onClick}
       style={{
+        ...style,
         display: "block",
-        zIndex: "99",
+        zIndex: "9",
         right: "0px",
         borderRadius: "50%",
         border: "none",
@@ -41,7 +41,7 @@ function SamplePrevArrow(props) {
       style={{
         ...style,
         display: "block",
-        zIndex: "99",
+        zIndex: "9",
         left: "0px",
         borderRadius: "50%",
         border: "none",

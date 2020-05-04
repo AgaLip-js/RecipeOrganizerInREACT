@@ -2,17 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarAlt, faHeart } from "@fortawesome/free-solid-svg-icons";
-import recipe1 from "../../../assets/pictures/recipe1.jpg";
+
 import RecipeCardInfo from "./RecipeCardInfo";
 import "./RecipeCard.css";
+import RecipeInfo from "../Form/RecipeInfo";
 
-const StyledMainPanel = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 32px;
-  margin: 50px 50px;
-  position: relative;
-`;
 const StyledCardContainer = styled.div`
   grid-auto-rows: 250px 50px;
   position: relative;
@@ -85,26 +79,37 @@ const StyledLikeIcon = styled.span`
   }
 `;
 
-const RecipeCard = () => {
+const RecipeCard = ({
+  image,
+  ingredientsQuantity,
+  portion,
+  preparingTime,
+  title,
+  date,
+}) => {
   return (
-    <StyledMainPanel>
-      <StyledCardContainer>
-        <StyledImageSection>
-          <StyledRecipeImage src={recipe1} />
-          <StyledDataIcon>
-            <FontAwesomeIcon
-              icon={faCalendarAlt}
-              style={{ marginRight: "5px" }}
-            />
-            22.06.2020
-          </StyledDataIcon>
-          <StyledLikeIcon>
-            <FontAwesomeIcon icon={faHeart} />
-          </StyledLikeIcon>
-        </StyledImageSection>
-        <RecipeCardInfo secondary />
-      </StyledCardContainer>
-    </StyledMainPanel>
+    <StyledCardContainer>
+      <StyledImageSection>
+        <StyledRecipeImage src={image} />
+        <StyledDataIcon>
+          <FontAwesomeIcon
+            icon={faCalendarAlt}
+            style={{ marginRight: "5px" }}
+          />
+          {date}
+        </StyledDataIcon>
+        <StyledLikeIcon>
+          <FontAwesomeIcon icon={faHeart} />
+        </StyledLikeIcon>
+      </StyledImageSection>
+      <RecipeCardInfo
+        secondary
+        ingredientsQuantity={ingredientsQuantity}
+        portion={portion}
+        preparingTime={preparingTime}
+        title={title}
+      />
+    </StyledCardContainer>
   );
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import logo from "../assets/pictures/PRZEPISOWNIK.png";
+import logo from "../../assets/pictures/PRZEPISOWNIK.png";
 
 const StyledNavBar = styled.div`
   width: 100%;

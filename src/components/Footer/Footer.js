@@ -2,11 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledFooterContainer = styled.div`
+  position: relative;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 50px;
   background: #f2a22c;
+  z-index: 1;
 `;
 const StyledFooterList = styled.ul`
   display: flex;
@@ -16,13 +18,14 @@ const StyledFooterList = styled.ul`
   margin-bottom: 0;
   color: white;
   padding-left: 0;
-  /* background: #f2a22c; */
+  font-size: 14px;
+  height: 100%;
 `;
 const StyledFooterSection = styled.li`
   text-align: center;
   align-items: center;
-  padding-top: 12px;
   transition: background, transform 0.2s;
+
   :hover {
     cursor: pointer;
     position: relative;

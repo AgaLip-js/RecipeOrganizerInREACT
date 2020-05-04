@@ -3,14 +3,13 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import MainView from "./MainView";
 import GlobalStyle from "../theme/GlobalStyle";
 import RecipeCategoryView from "./RecipeCategoryView";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar/Navbar";
 import { Provider } from "react-redux";
 import store from "../store";
 import MyWeekView from "./MyWeekView";
 import KitchenCheatSheetView from "./KitchenCheatSheetView";
 import ShoppingListView from "./ShoppingListView";
-import Footer from "../components/Footer";
-
+import Footer from "../components/Footer/Footer";
 function Root() {
   return (
     <Provider store={store}>

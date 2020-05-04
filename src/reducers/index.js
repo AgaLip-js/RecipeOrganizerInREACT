@@ -1,49 +1,94 @@
-import { ADD_RECIPE_ACTION, ADD_GUNINA } from "../actions";
+import {
+  OPEN_MODAL,
+  CLOSE_MODAL,
+  ADD_RECIPE,
+  ADD_MEAL,
+  CLOSE_MINI_MODAL,
+  OPEN_MINI_MODAL,
+} from "../actions";
+import { initialRecipies } from "../models/initialRecipies";
 
 const initialState = {
-    myRecipies: [],
-    gunina: 'guniną'
+  open: false,
+  recipies: initialRecipies,
+  mealPlannerData: [],
+  date: "",
+  type: "",
 };
 
 const mainReducer = (state = initialState, action) => {
-
-    console.log("***********************************************************************************")
-
-
-    console.log("Initial state: ");
-    console.log(initialState);
-
-    console.log("State: ")
-    console.log(state);
-
-    console.log("Action: ");
-    console.log(action);
-
-    console.log("----------------------------------------------------------------------------------");
-
-
-    switch (action.type) {
-        case ADD_RECIPE_ACTION: {
-            console.log("WYWOLALA SIE AKCJA DODAJ RECIPE")
-            return {
-                ...state,
-                myRecipies: [...state.myRecipies, action.payload.myRecipe]
-            }
-        }
-        case ADD_GUNINA: {
-            console.log("WYWOLALA SIE AKCJA DODAJ GUNINA")
-            return {
-                ...state,
-
-            }
-        }
-        case 'TEST': {
-            console.log(state);
-            return state;
-        }
-        default:
-            return state;
+  switch (action.type) {
+    case OPEN_MODAL: {
+      return {
+        ...state,
+        open: action.payload.open,
+      };
     }
+    case CLOSE_MODAL: {
+      return {
+        ...state,
+        open: action.payload.open,
+      };
+    }
+    case ADD_RECIPE: {
+      return {
+        ...state,
+        recipies: [...state.recipies, action.payload.newRecipe],
+      };
+    }
+    case ADD_MEAL: {
+      let foundDay = false;
+      const pday = state.mealPlannerData.map((day) => {
+        if (day.date === action.payload.date) {
+          const editedDay = {
+            ...day,
+            [action.payload.type]: action.payload.newMealDay,
+          };
+          foundDay = true;
+          return editedDay;
+        } else {
+          return day;
+        }
+      });
+
+      if (foundDay) {
+        return {
+          ...state,
+          mealPlannerData: pday,
+        };
+      } else {
+        const newDay = {
+          date: action.payload.date,
+          [action.payload.type]: action.payload.newMealDay,
+        };
+        return {
+          ...state,
+          mealPlannerData: [...state.mealPlannerData, newDay],
+        };
+      }
+    }
+    case CLOSE_MINI_MODAL: {
+      return {
+        ...state,
+        open: action.payload.open,
+      };
+    }
+    case OPEN_MINI_MODAL: {
+      return {
+        ...state,
+        open: action.payload.open,
+        date: action.payload.date,
+        type: action.payload.type,
+      };
+    }
+
+    case "TEST": {
+      console.log(state);
+      return state;
+    }
+    default:
+      return state;
+  }
 };
 
 export default mainReducer;
