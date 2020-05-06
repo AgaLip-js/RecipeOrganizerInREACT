@@ -20,10 +20,10 @@ const StyledContainerBox = styled.div`
 `;
 const StyledContainer = styled.div`
   position: relative;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 `;
 
 const StyledWrapper = styled.div`
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   flex-direction: column;

@@ -78,42 +78,39 @@ const StyledIconContainer = styled.button`
   background: rgb(242, 162, 44);
 `;
 
-const InputImg = ({ value, name, fileURL, setfileURL }) => {
+const InputImg = ({ name, fileURL, setfileURL }) => {
   const [fileName, setFileName] = useState("Wybierz zdjęcie");
-  let fileInput = React.useRef(fileName);
+  const fileInput = React.useRef(null);
 
   const addPhoto = (e) => {
-    console.log(fileInput.current.files[0]);
     setFileName(e.target.files[0].name);
-    setfileURL(URL.createObjectURL(e.target.files[0]));
-    console.log(fileURL);
+    const urlObject = URL.createObjectURL(fileInput.current.files[0]);
+    setfileURL(urlObject);
   };
 
   const clearPhoto = (e) => {
     fileInput.current.value = "";
-    console.log(fileInput);
     setFileName("Wybierz zdjęcie");
     setfileURL(null);
   };
-
   return (
     <StyledImgWrapper>
       <StyledInputImg
         type="file"
-        id="file"
+        id={name}
         name={name}
         accept="image/*"
+        multiple
         onChange={addPhoto}
         ref={fileInput}
-        value={value}
       />
       {fileName !== "Wybierz zdjęcie" && (
         <StyledIconContainer type="button" onClick={clearPhoto}>
           <FontAwesomeIcon icon={faTrash} />
         </StyledIconContainer>
       )}
-      <StyledInputLabel htmlFor="file">{fileName}</StyledInputLabel>
-      {fileURL != null ? (
+      <StyledInputLabel htmlFor={name}>{fileName}</StyledInputLabel>
+      {fileURL ? (
         <StyledImg src={fileURL} width="300px" height="150px" />
       ) : (
         <StyledImg src={picture} width="300px" height="150px" />

@@ -1,58 +1,70 @@
 import React from "react";
-import Header from "../components/Header/Header";
-import SimpleSlider from "../components/atoms/Carousel/Carousel";
-import RecipeCard from "../components/atoms/RecipeCard/RecipeCard";
-import Modal from "../components/Modal/Modal";
-import { useSelector } from "react-redux";
+import Button from "../components/atoms/Button/Button";
+import "./MainView.css";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
+const StyledNavLink = styled.div``;
 const MainView = () => {
-  const { open } = useSelector((store) => ({
-    open: store.open,
-  }));
-  const { recipies } = useSelector((store) => ({
-    recipies: store.recipies,
-  }));
-  const StyledContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 32px;
-    margin: 50px 50px;
-    position: relative;
-  `;
   return (
-    <div>
-      <Header />
-      <SimpleSlider />
-      <StyledContainer>
-        {recipies.map((recipe) => (
-          <RecipeCard
-            image={recipe.image}
-            ingredientsQuantity={recipe.ingredientsQuantity}
-            portion={recipe.portion}
-            preparingTime={recipe.preparingTime}
-            title={recipe.title}
-            date={recipe.date}
-            id={recipe.id}
-          />
-        ))}
-      </StyledContainer>
-
-      {open && <Modal />}
-      {/* {recipies.map((recipe) => (
-        <>
-          <div>Title: {recipe.title}</div>
-          <img src={recipe.image} />
-          <div>Link: {recipe.link}</div>
-          <div>Category: {recipe.category}</div>
-          <div>Prep Time: {recipe.preparingTime}</div>
-          <div>ingredientsQuantity: {recipe.ingredientsQuantity}</div>
-          <div>Portion: {recipe.portion}</div>
-          <div>My ingredients: {recipe.myIngredients[0].name}</div>
-          <div>Description: {recipe.description}</div>
-          <div> Date : {recipe.addDate}</div>
-        </> */}
-    </div>
+    <main>
+      <div className="hero">
+        <div className="hero-container">
+          <h1>
+            Organizuj przepisy w jednym miejscu,
+            <br />
+            planuj swój tydzień!
+          </h1>
+        </div>
+      </div>
+      <div className="articles">
+        <article>
+          <header>
+            <h3>Zarządzaj przepisami</h3>
+          </header>
+          <p>Dodawaj swoje ulubione przepisy lub twórz własne</p>
+          <footer>
+            <button className="myButton">
+              Przejdź do przepisów
+              <StyledNavLink as={NavLink} to="/recipes">
+                <div class="arrow"></div>
+              </StyledNavLink>
+            </button>
+          </footer>
+        </article>
+        <article>
+          <header>
+            <h3>Zaplanuj tydzień</h3>
+          </header>
+          <p>
+            Planuj swoje posiłki na cały tydzień, korzystając z wbudowanego
+            kalendarza
+          </p>
+          <footer>
+            <button className="myButton">
+              Przejdź do mojego tygodnia
+              <StyledNavLink as={NavLink} to="/myWeek">
+                <div class="arrow"></div>
+              </StyledNavLink>
+            </button>
+          </footer>
+        </article>
+        <article>
+          <header>
+            <h3>Stwórz listę zakupów</h3>
+          </header>
+          <p>Twórz i edytuj listę zakupów. Bądź przygotowany na każdą okazję</p>
+          <footer>
+            <button className="myButton">
+              Przejdź do listy zakupów
+              <StyledNavLink as={NavLink} to="/shoppingList">
+                <div class="arrow"></div>
+              </StyledNavLink>
+            </button>
+          </footer>
+        </article>
+      </div>
+    </main>
   );
 };
 

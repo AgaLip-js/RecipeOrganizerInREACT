@@ -4,6 +4,7 @@ export const ADD_RECIPE = "ADD_RECIPE";
 export const ADD_MEAL = "ADD_MEAL";
 export const CLOSE_MINI_MODAL = "CLOSE_MINI_MODAL";
 export const OPEN_MINI_MODAL = "OPEN_MINI_MODAL";
+export const REMOVE_MEAL = "REMOVE_MEAL";
 
 export const openModal = () => (dispatch) => {
   dispatch({
@@ -29,11 +30,21 @@ export const addRecipe = (newItem) => (dispatch) => {
     },
   });
 };
+
 export const updateMealDay = (newItem, date, type) => (dispatch) => {
   dispatch({
     type: ADD_MEAL,
     payload: {
       newMealDay: newItem,
+      date: date,
+      type: type,
+    },
+  });
+};
+export const removeMealDay = (date, type) => (dispatch) => {
+  dispatch({
+    type: REMOVE_MEAL,
+    payload: {
       date: date,
       type: type,
     },

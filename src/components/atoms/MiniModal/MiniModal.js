@@ -38,6 +38,7 @@ const StyledWrapper = styled.div`
 
   input {
     margin-top: 0px;
+    font-size: 14px;
   }
 `;
 const StyledButtonClose = styled.span`
@@ -67,10 +68,8 @@ const MiniModal = () => {
   const miniModalClose = () => {
     dispatch(closeMiniModal());
   };
-  const { date } = useSelector((store) => ({
+  const { date, type } = useSelector((store) => ({
     date: store.date,
-  }));
-  const { type } = useSelector((store) => ({
     type: store.type,
   }));
 
@@ -78,8 +77,8 @@ const MiniModal = () => {
   const newRecipe = {
     name: "",
     link: "",
-    image: fileURL,
   };
+
   const [newMeal, setNewMeal] = useState(newRecipe);
 
   const handleInputChange = (e) => {
@@ -89,14 +88,16 @@ const MiniModal = () => {
     });
   };
   const addMeal = (newMeal) => {
-    newMeal.image = fileURL;
-    console.log("add meal");
-    console.log(newMeal);
-    console.log(date);
-    console.log(type);
-
-    dispatch(updateMealDay(newMeal, date, type));
-    dispatch(closeMiniModal());
+    if (newMeal.name === "") {
+      return false;
+    } else {
+      const newMealObject = {
+        name: newMeal.name,
+        image: fileURL,
+      };
+      dispatch(updateMealDay(newMealObject, date, type));
+      dispatch(closeMiniModal());
+    }
   };
 
   return (

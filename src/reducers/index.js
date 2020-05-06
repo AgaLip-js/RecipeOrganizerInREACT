@@ -5,6 +5,7 @@ import {
   ADD_MEAL,
   CLOSE_MINI_MODAL,
   OPEN_MINI_MODAL,
+  REMOVE_MEAL,
 } from "../actions";
 import { initialRecipies } from "../models/initialRecipies";
 
@@ -12,8 +13,6 @@ const initialState = {
   open: false,
   recipies: initialRecipies,
   mealPlannerData: [],
-  date: "",
-  type: "",
 };
 
 const mainReducer = (state = initialState, action) => {
@@ -66,6 +65,23 @@ const mainReducer = (state = initialState, action) => {
           mealPlannerData: [...state.mealPlannerData, newDay],
         };
       }
+    }
+    case REMOVE_MEAL: {
+      const pday = state.mealPlannerData.map((day) => {
+        if (day.date === action.payload.date) {
+          const editedDay = {
+            ...day,
+          };
+          delete editedDay[action.payload.type];
+          return editedDay;
+        } else {
+          return day;
+        }
+      });
+      return {
+        ...state,
+        mealPlannerData: pday,
+      };
     }
     case CLOSE_MINI_MODAL: {
       return {

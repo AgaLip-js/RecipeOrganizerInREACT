@@ -12,8 +12,6 @@ import {
 
 import MealPlannerGrid from "../components/MealPlannerGrid/MealPlannerGrid";
 
-import { useSelector } from "react-redux";
-
 const StyledFrame = styled.div`
   width: 80%;
   margin: 0 auto;
@@ -69,6 +67,7 @@ const StyledRecipeDayView = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  transition: all 0.5s linear;
 `;
 const StyledTitleRecipeView = styled.h2`
   text-align: center;

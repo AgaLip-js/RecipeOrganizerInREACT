@@ -15,6 +15,7 @@ const StyledRecipeTitle = styled.h2`
   font-size: 14px;
   margin: 10px;
   background: white;
+  color: rgba(0, 0, 0, 0.7);
 `;
 const StyledOpenTable = styled.div`
   transition: all 0.4s linear;

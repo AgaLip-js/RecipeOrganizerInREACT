@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const StyledFooterContainer = styled.div`
+const StyledFooterContainer = styled.footer`
   position: relative;
   left: 0;
   bottom: 0;
@@ -15,11 +15,9 @@ const StyledFooterList = styled.ul`
   justify-content: space-around;
   list-style-type: none;
   align-items: center;
-  margin-bottom: 0;
   color: white;
   padding-left: 0;
   font-size: 14px;
-  height: 100%;
 `;
 const StyledFooterSection = styled.li`
   text-align: center;

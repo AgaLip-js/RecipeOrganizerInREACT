@@ -30,6 +30,14 @@ box-sizing: border-box;
   overflow-x: hidden;
   font-weight: 400;
 }
+#root{
+  background-color: white;
+  justify-content: space-between;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  flex: 1;
+}
 
 `;
 

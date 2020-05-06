@@ -4,8 +4,8 @@ import styled from "styled-components";
 const StyledButton = styled.button`
   cursor: pointer;
   text-transform: uppercase;
-  height: 30px;
-  font-size: 12px;
+  height: ${({ secondary }) => (secondary ? "30px" : "40px")}; 
+  font-size: 14px;
   border-radius: 5px;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);

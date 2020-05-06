@@ -27,7 +27,7 @@ const StyledButtonClose = styled.span`
   text-align: end;
   width: 18px;
   position: fixed;
-  right: 15%;
+  transform: translateX(940px);
   :hover,
   :focus {
     color: darkgray;

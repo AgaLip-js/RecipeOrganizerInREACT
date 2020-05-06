@@ -24,6 +24,16 @@ const StyledMealTimeContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
+const StyledGridContainer = styled.div`
+  position: relative;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  height: 225px;
+  margin: 5px;
+  width: 200px;
+}
+`;
 const MealPlannerGrid = ({ currentDate }) => {
   const dispatch = useDispatch();
 
@@ -40,7 +50,6 @@ const MealPlannerGrid = ({ currentDate }) => {
   const [state, setState] = useState({});
 
   useEffect(() => {
-    console.log(mealPlannerData);
     const foundDay = mealPlannerData.find(({ date }) => {
       return date === currentDate;
     });
@@ -55,76 +64,135 @@ const MealPlannerGrid = ({ currentDate }) => {
   if (state === null) {
     return <p>Loading...</p>;
   }
-
   return (
     <StyledDayTimeGrid>
       <StyledMealTimeContainer>
         <StyledDayTimeTitle>Śniadanie </StyledDayTimeTitle>
-        {state.breakfast ? (
-          <MealCard name={state.name} />
-        ) : (
-          <FontAwesomeIcon
-            onClick={() => onAddClick(currentDate, types[0])}
-            icon={faPlus}
-            style={{ fontSize: "34px", left: "20%", position: "relative" }}
-          />
-        )}
+        <StyledGridContainer>
+          {state.breakfast ? (
+            <MealCard
+              name={state.breakfast.name}
+              img={state.breakfast.image}
+              link={state.breakfast.link}
+              type="breakfast"
+              date={state.date}
+            />
+          ) : (
+            <FontAwesomeIcon
+              onClick={() => onAddClick(currentDate, types[0])}
+              icon={faPlus}
+              style={{
+                fontSize: "34px",
+                color: "#00000038",
+                cursor: "pointer",
+              }}
+            />
+          )}
+        </StyledGridContainer>
       </StyledMealTimeContainer>
       <StyledMealTimeContainer>
         <StyledDayTimeTitle>Drugie śniadanie </StyledDayTimeTitle>
-        {state.secondBreakfast ? (
-          <MealCard name={state.name} />
-        ) : (
-          <FontAwesomeIcon
-            onClick={() => {
-              onAddClick(currentDate, types[1]);
-            }}
-            icon={faPlus}
-            style={{ fontSize: "34px", left: "20%", position: "relative" }}
-          />
-        )}
+        <StyledGridContainer>
+          {state.secondBreakfast ? (
+            <MealCard
+              name={state.secondBreakfast.name}
+              img={state.secondBreakfast.image}
+              link={state.secondBreakfast.link}
+              type="secondBreakfast"
+              date={state.date}
+            />
+          ) : (
+            <FontAwesomeIcon
+              onClick={() => {
+                onAddClick(currentDate, types[1]);
+              }}
+              icon={faPlus}
+              style={{
+                fontSize: "34px",
+                color: "#00000038",
+                cursor: "pointer",
+              }}
+            />
+          )}
+        </StyledGridContainer>
       </StyledMealTimeContainer>
       <StyledMealTimeContainer>
         <StyledDayTimeTitle>Obiad </StyledDayTimeTitle>
-        {state.lunch ? (
-          <MealCard name={state.name} />
-        ) : (
-          <FontAwesomeIcon
-            onClick={() => {
-              onAddClick(currentDate, types[2]);
-            }}
-            icon={faPlus}
-            style={{ fontSize: "34px", left: "20%", position: "relative" }}
-          />
-        )}
+        <StyledGridContainer>
+          {state.lunch ? (
+            <MealCard
+              name={state.lunch.name}
+              img={state.lunch.image}
+              link={state.lunch.link}
+              type="lunch"
+              date={state.date}
+            />
+          ) : (
+            <FontAwesomeIcon
+              onClick={() => {
+                onAddClick(currentDate, types[2]);
+              }}
+              icon={faPlus}
+              style={{
+                fontSize: "34px",
+                color: "#00000038",
+                cursor: "pointer",
+              }}
+            />
+          )}
+        </StyledGridContainer>
       </StyledMealTimeContainer>
       <StyledMealTimeContainer>
         <StyledDayTimeTitle>Podwieczorek </StyledDayTimeTitle>
-        {state.snacks ? (
-          <MealCard name={state.name} />
-        ) : (
-          <FontAwesomeIcon
-            onClick={() => {
-              onAddClick(currentDate, types[3]);
-            }}
-            icon={faPlus}
-            style={{ fontSize: "34px", left: "20%", position: "relative" }}
-          />
-        )}
+        <StyledGridContainer>
+          {state.snacks ? (
+            <MealCard
+              name={state.snacks.name}
+              img={state.snacks.image}
+              link={state.snacks.link}
+              type="snacks"
+              date={state.date}
+            />
+          ) : (
+            <FontAwesomeIcon
+              onClick={() => {
+                onAddClick(currentDate, types[3]);
+              }}
+              icon={faPlus}
+              style={{
+                fontSize: "34px",
+                color: "#00000038",
+                cursor: "pointer",
+              }}
+            />
+          )}
+        </StyledGridContainer>
       </StyledMealTimeContainer>
       <StyledMealTimeContainer>
         <StyledDayTimeTitle>Kolacja </StyledDayTimeTitle>
-        {state.dinner ? (
-          <MealCard name={state.name} />
-        ) : (
-          <FontAwesomeIcon
-            onClick={() => {
-              onAddClick(currentDate, types[4]);
-            }}
-            icon={faPlus}
-            style={{ fontSize: "34px", left: "20%", position: "relative" }}
-          />
-        )}
+        <StyledGridContainer>
+          {state.dinner ? (
+            <MealCard
+              name={state.dinner.name}
+              img={state.dinner.image}
+              link={state.dinner.link}
+              type="dinner"
+              date={state.date}
+            />
+          ) : (
+            <FontAwesomeIcon
+              onClick={() => {
+                onAddClick(currentDate, types[4]);
+              }}
+              icon={faPlus}
+              style={{
+                fontSize: "34px",
+                color: "#00000038",
+                cursor: "pointer",
+              }}
+            />
+          )}
+        </StyledGridContainer>
       </StyledMealTimeContainer>
       {open && <MiniModal />}
     </StyledDayTimeGrid>

@@ -5,8 +5,8 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const StyledInputContainer = styled.div`
   background-color: rgba(235, 235, 235, 0.425);
-  height: 30px;
-  border-radius: 30px;
+  height: 40px;
+  border-radius: 40px;
   margin-right: 25px;
   :hover > input {
     width: 240px;
@@ -16,8 +16,8 @@ const StyledInputContainer = styled.div`
 const StyledButtonIcon = styled.button`
   color: white;
   float: right;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: rgb(242, 162, 44);
   display: flex;
@@ -46,7 +46,7 @@ const StyledInputType = styled.input`
   padding: 0;
   font-size: 14px;
   transition: 0.4s;
-  line-height: 30px;
+  line-height: 40px;
   width: 0px;
   background: none;
   color: #666666;

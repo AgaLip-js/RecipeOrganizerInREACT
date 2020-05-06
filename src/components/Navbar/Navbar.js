@@ -41,8 +41,8 @@ const StyledItemView = styled.li`
   align-items: center;
   justify-content: space-around;
   text-transform: uppercase;
-  color: black;
-  font-size: 14px;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 18px;
   height: 54px;
   margin: 15px;
   padding: 10px;
@@ -74,21 +74,14 @@ const Navbar = () => {
         <StyledMainLogo icon={logo} />
       </StyledNavItem>
       <StyledListItemView>
-        <StyledItemView as={NavLink} to="/category" activeclass="active">
-          Kategorie Przepisów
+        <StyledItemView as={NavLink} to="/recipes" activeclass="active">
+          Przepisy
         </StyledItemView>
         <StyledItemView as={NavLink} to="/myWeek" activeclass="active">
-          Mój Tydzień{" "}
+          Mój Tydzień
         </StyledItemView>
         <StyledItemView as={NavLink} to="/shoppingList" activeclass="active">
           Lista zakupów
-        </StyledItemView>
-        <StyledItemView
-          as={NavLink}
-          to="/kitchenCheatSheet"
-          activeclass="active"
-        >
-          Kuchenna Ściąga
         </StyledItemView>
       </StyledListItemView>
     </StyledNavBar>
