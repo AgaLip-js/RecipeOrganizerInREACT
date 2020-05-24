@@ -1,0 +1,14 @@
+.slick-arrow::before {
+  color: rgb(247, 247, 247);
+  font-size: 30px;
+  opacity: 0.5;
+}
+
+.slick-next {
+  margin-right: 20px;
+  width: 10px;
+  height: 40px;
+}
+.slick-prev {
+  height: 40px;
+}
