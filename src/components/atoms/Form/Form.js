@@ -6,8 +6,10 @@ import RecipeInfo from "./RecipeInfo";
 import AddIngredients from "../AddIngredients/AddIngredients";
 import Button from "../Button/Button";
 import { useDispatch } from "react-redux";
-import { addRecipe, closeModal } from "../../../actions";
+import { addRecipe, closeModal, editRecipe } from "../../../actions";
 import { v4 as uuidv4 } from "uuid";
+
+import picture from "../../../assets/pictures/default-img.jpg";
 
 const StyledContent = styled.div`
   width: 1000px;
@@ -84,28 +86,48 @@ const StyledSecondColumn = styled.div`
     margin-bottom: 50px;
   }
 `;
+const StyledRequiredText = styled.p`
+  position: relative;
+  margin-top: -20px;
+  margin-left: 5px;
+  color: red;
+  font-size: 12px;
+`;
 
-const Form = ({ children }) => {
+const Form = ({ children, recipe }) => {
   const handleKeyDown = (e) => {
     if (e.keyCode === 13) {
       e.preventDefault();
       return false;
     }
   };
+
   const dispatch = useDispatch();
-
+  const [required, setRequired] = useState(false);
   const submitRecipe = (newItem) => {
-    newItem.myIngredients = myIngredients;
-    newItem.ingredientsQuantity = myIngredients.length;
-    newItem.image = fileURL;
-    newItem.date = addDate;
+    if (newItem.title === "") {
+      setRequired(true);
+      return false;
+    } else {
+      newItem.myIngredients = myIngredients;
+      newItem.ingredientsQuantity = myIngredients.length;
+      newItem.image = fileURL;
+      newItem.date = addDate;
 
-    dispatch(addRecipe(newItem));
-    dispatch(closeModal());
+      if (recipe) {
+        dispatch(editRecipe(newItem));
+      } else {
+        dispatch(addRecipe(newItem));
+      }
+
+      dispatch(closeModal());
+    }
   };
 
-  const [myIngredients, setMyIngredients] = useState([]);
-  const [fileURL, setfileURL] = useState(null);
+  const [myIngredients, setMyIngredients] = useState(
+    recipe ? recipe.myIngredients : []
+  );
+  const [fileURL, setfileURL] = useState(recipe ? recipe.image : picture);
 
   let newDate = new Date();
   let today = newDate.getDate();
@@ -114,19 +136,19 @@ const Form = ({ children }) => {
 
   let addDate = `${today < 10 ? `0${today}` : `${today}`}.${
     month < 10 ? `0${month}` : `${month}`
-    }.${year}`;
+  }.${year}`;
 
   const itemArray = {
-    title: "",
+    title: recipe ? recipe.title : "",
     image: fileURL,
-    link: "",
-    category: "",
-    preparingTime: "",
+    link: recipe ? recipe.link : "",
+    category: recipe ? recipe.category : "",
+    preparingTime: recipe ? recipe.preparingTime : "",
     ingredientsQuantity: myIngredients.length,
-    portion: "",
+    portion: recipe ? recipe.portion : "",
     myIngredients: myIngredients,
-    description: "",
-    id: uuidv4(),
+    description: recipe ? recipe.description : "",
+    id: recipe ? recipe.id : uuidv4(),
     date: addDate,
   };
   const [newItem, setNewItem] = useState(itemArray);
@@ -154,6 +176,9 @@ const Form = ({ children }) => {
             value={newItem.title}
             onChange={handleInputChange}
           />
+          {required && newItem.title === "" && (
+            <StyledRequiredText>Wpisz tytuł</StyledRequiredText>
+          )}
           <InputImg
             // value={newItem.image}
             // onChange={handleInputChange}
@@ -181,13 +206,14 @@ const Form = ({ children }) => {
             value={newItem.category}
           />
           <RecipeInfo
-            firstValue={newItem.przeparingTime}
+            firstValue={newItem.preparingTime}
             secondValue={myIngredients.length}
             thirdValue={newItem.portion}
             onChange={handleInputChange}
             firstName="preparingTime"
             secondName="ingredientsQuantity"
             thirdName="portion"
+            required="required"
           />
           <AddIngredients
             onKeyDown={handleKeyDown}

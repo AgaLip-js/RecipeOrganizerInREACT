@@ -10,6 +10,7 @@ export const initialRecipies = [
     preparingTime: "60",
     title: "Przepis 1",
     date: "03.05.2020",
+    myIngredients: [],
   },
   {
     id: uuidv4(),
@@ -19,5 +20,6 @@ export const initialRecipies = [
     preparingTime: "120",
     title: "Przepis 2",
     date: "03.05.2020",
+    myIngredients: [],
   },
 ];

@@ -85,6 +85,8 @@ const RecipeCard = ({
   preparingTime,
   title,
   date,
+  id,
+  recipe,
 }) => {
   return (
     <StyledCardContainer>
@@ -107,6 +109,9 @@ const RecipeCard = ({
         portion={portion}
         preparingTime={preparingTime}
         title={title}
+        image={image}
+        id={id}
+        recipe={recipe}
       />
     </StyledCardContainer>
   );

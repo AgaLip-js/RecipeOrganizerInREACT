@@ -8,6 +8,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Button from "../Button/Button";
 import "./RecipeCard.css";
+import { useDispatch } from "react-redux";
+import { openModal } from "../../../actions";
 
 const StyledRecipeTitle = styled.h2`
   position: relative;
@@ -53,7 +55,12 @@ const RecipeCardInfo = ({
   portion,
   preparingTime,
   title,
+  recipe,
 }) => {
+  const dispatch = useDispatch();
+  const handleAddClick = (recipe) => {
+    dispatch(openModal(recipe));
+  };
   return (
     <div className="RecipeCardInfo">
       <StyledRecipeTitle> {title} </StyledRecipeTitle>
@@ -75,7 +82,9 @@ const RecipeCardInfo = ({
             <StyledAccount>Porcje</StyledAccount>
           </StyledIconContainer>
         </StyledInfoTable>
-        <Button secondary> Zobacz przepis </Button>
+        <Button secondary onClick={() => handleAddClick(recipe)}>
+          Zobacz przepis
+        </Button>
       </StyledOpenTable>
     </div>
   );

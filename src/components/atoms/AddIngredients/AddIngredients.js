@@ -59,31 +59,39 @@ const AddIngredients = ({ myIngredients, setMyIngredients, ...props }) => {
   const [currentlyEditedID, setcurrentlyEditedID] = useState(false);
 
   const handleClick = () => {
-    const newIngredient = {
-      id: nextId(),
-      name: myInput,
-    };
+    if (myInput === "") {
+      return false;
+    } else {
+      const newIngredient = {
+        id: nextId(),
+        name: myInput,
+      };
 
-    setMyIngredients([...myIngredients, newIngredient]);
-    setInput("");
+      setMyIngredients([...myIngredients, newIngredient]);
+      setInput("");
+    }
   };
 
   const handleEditClick = (id) => {
-    const newIngredient = {
-      id: id,
-      name: myInputEdit,
-    };
-    setMyIngredients(
-      myIngredients.map((ingredient) => {
-        if (ingredient.id !== id) {
-          return ingredient;
-        } else {
-          return newIngredient;
-        }
-      })
-    );
-    setInputEdit("");
-    setcurrentlyEditedID(null);
+    if (myInputEdit === "") {
+      return false;
+    } else {
+      const newIngredient = {
+        id: id,
+        name: myInputEdit,
+      };
+      setMyIngredients(
+        myIngredients.map((ingredient) => {
+          if (ingredient.id !== id) {
+            return ingredient;
+          } else {
+            return newIngredient;
+          }
+        })
+      );
+      setInputEdit("");
+      setcurrentlyEditedID(null);
+    }
   };
 
   const removeItem = (id) => {
@@ -120,8 +128,8 @@ const AddIngredients = ({ myIngredients, setMyIngredients, ...props }) => {
             {currentlyEditedID === ingredient.id ? (
               showInput(ingredient.id, ingredient.name)
             ) : (
-                <p>{ingredient.name}</p>
-              )}
+              <p>{ingredient.name}</p>
+            )}
             <StyledRemoveButton
               type="button"
               onClick={() => checkFn(ingredient.id)}

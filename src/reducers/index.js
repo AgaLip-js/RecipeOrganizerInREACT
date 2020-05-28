@@ -6,6 +6,7 @@ import {
   CLOSE_MINI_MODAL,
   OPEN_MINI_MODAL,
   REMOVE_MEAL,
+  EDIT_RECIPE,
 } from "../actions";
 import { initialRecipies } from "../models/initialRecipies";
 
@@ -13,6 +14,7 @@ const initialState = {
   open: false,
   recipies: initialRecipies,
   mealPlannerData: [],
+  recipe: "",
 };
 
 const mainReducer = (state = initialState, action) => {
@@ -21,18 +23,13 @@ const mainReducer = (state = initialState, action) => {
       return {
         ...state,
         open: action.payload.open,
+        recipe: action.payload.selectRecipe,
       };
     }
     case CLOSE_MODAL: {
       return {
         ...state,
         open: action.payload.open,
-      };
-    }
-    case ADD_RECIPE: {
-      return {
-        ...state,
-        recipies: [...state.recipies, action.payload.newRecipe],
       };
     }
     case ADD_MEAL: {
@@ -49,7 +46,6 @@ const mainReducer = (state = initialState, action) => {
           return day;
         }
       });
-
       if (foundDay) {
         return {
           ...state,
@@ -65,6 +61,23 @@ const mainReducer = (state = initialState, action) => {
           mealPlannerData: [...state.mealPlannerData, newDay],
         };
       }
+    }
+    case ADD_RECIPE: {
+      return {
+        ...state,
+        recipies: [...state.recipies, action.payload.newRecipe],
+      };
+    }
+    case EDIT_RECIPE: {
+      return {
+        ...state,
+        recipies: state.recipies.map((recipe) => {
+          if (recipe.id === action.payload.newRecipe.id)
+            return action.payload.newRecipe;
+
+          return recipe;
+        }),
+      };
     }
     case REMOVE_MEAL: {
       const pday = state.mealPlannerData.map((day) => {

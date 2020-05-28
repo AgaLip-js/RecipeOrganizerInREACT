@@ -26,7 +26,7 @@ const MainView = () => {
             <button className="myButton">
               Przejdź do przepisów
               <StyledNavLink as={NavLink} to="/recipe/recipes">
-                <div class="arrow"></div>
+                <div className="arrow"></div>
               </StyledNavLink>
             </button>
           </footer>
@@ -43,7 +43,7 @@ const MainView = () => {
             <button className="myButton">
               Przejdź do mojego tygodnia
               <StyledNavLink as={NavLink} to="/recipe/myWeek">
-                <div class="arrow"></div>
+                <div className="arrow"></div>
               </StyledNavLink>
             </button>
           </footer>
@@ -57,7 +57,7 @@ const MainView = () => {
             <button className="myButton">
               Przejdź do listy zakupów
               <StyledNavLink as={NavLink} to="/recipe/shoppingList">
-                <div class="arrow"></div>
+                <div className="arrow"></div>
               </StyledNavLink>
             </button>
           </footer>

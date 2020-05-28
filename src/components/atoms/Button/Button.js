@@ -4,7 +4,7 @@ import styled from "styled-components";
 const StyledButton = styled.button`
   cursor: pointer;
   text-transform: uppercase;
-  height: ${({ secondary }) => (secondary ? "30px" : "40px")}; 
+  height: ${({ secondary }) => (secondary ? "30px" : "40px")};
   font-size: 14px;
   border-radius: 5px;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
@@ -13,7 +13,7 @@ const StyledButton = styled.button`
   border: solid 1px #da7c0c;
   background: rgb(242, 162, 44);
   margin: ${({ secondary }) => (secondary ? "5px 10px" : "0px")};
-  }
+
   :hover {
     background: #f47c20;
     background: linear, left top, left bottom, from(#f88e11), to(#f06015);

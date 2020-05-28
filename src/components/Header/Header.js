@@ -21,13 +21,13 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const handleAddClick = () => {
-    dispatch(openModal());
+    dispatch(openModal(null));
   };
   return (
     <StyledHomeContainer>
       <StyledHomePanel>
         <SearchInput placeholder="Wyszukaj przepis" type="search" />
-        <Button onClick={handleAddClick}>Dodaj przepis</Button>
+        <Button onClick={() => handleAddClick()}>Dodaj przepis</Button>
       </StyledHomePanel>
     </StyledHomeContainer>
   );

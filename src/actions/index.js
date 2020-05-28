@@ -5,12 +5,14 @@ export const ADD_MEAL = "ADD_MEAL";
 export const CLOSE_MINI_MODAL = "CLOSE_MINI_MODAL";
 export const OPEN_MINI_MODAL = "OPEN_MINI_MODAL";
 export const REMOVE_MEAL = "REMOVE_MEAL";
+export const EDIT_RECIPE = "EDIT_RECIPE";
 
-export const openModal = () => (dispatch) => {
+export const openModal = (recipe) => (dispatch) => {
   dispatch({
     type: OPEN_MODAL,
     payload: {
       open: true,
+      selectRecipe: recipe,
     },
   });
 };
@@ -27,6 +29,14 @@ export const addRecipe = (newItem) => (dispatch) => {
     type: ADD_RECIPE,
     payload: {
       newRecipe: newItem,
+    },
+  });
+};
+export const editRecipe = (editItem) => (dispatch) => {
+  dispatch({
+    type: EDIT_RECIPE,
+    payload: {
+      newRecipe: editItem,
     },
   });
 };

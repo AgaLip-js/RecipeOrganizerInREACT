@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
 import Form from "../atoms/Form/Form";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../actions";
 
 const StyledWrapper = styled.div`
@@ -47,10 +47,12 @@ const Modal = () => {
   const handleCloseClick = () => {
     dispatch(closeModal());
   };
-
+  const { recipe } = useSelector((store) => ({
+    recipe: store.recipe,
+  }));
   return (
     <StyledWrapper>
-      <Form>
+      <Form recipe={recipe}>
         <StyledButtonClose onClick={handleCloseClick}>
           <FontAwesomeIcon icon={faWindowClose} />
         </StyledButtonClose>
