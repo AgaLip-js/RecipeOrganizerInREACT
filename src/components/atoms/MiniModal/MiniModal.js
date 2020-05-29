@@ -77,6 +77,7 @@ const MiniModal = () => {
   const newRecipe = {
     name: "",
     link: "",
+    image: fileURL,
   };
 
   const [newMeal, setNewMeal] = useState(newRecipe);
@@ -93,6 +94,7 @@ const MiniModal = () => {
     } else {
       const newMealObject = {
         name: newMeal.name,
+        link: newMeal.link,
         image: fileURL,
       };
       dispatch(updateMealDay(newMealObject, date, type));

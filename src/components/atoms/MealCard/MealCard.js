@@ -77,16 +77,16 @@ const MealCard = ({ name, img, link, date, type }) => {
       {img ? (
         <StyledRecipeImage src={img} />
       ) : (
-          <StyledRecipeImage src={defaultImg} />
-        )}
+        <StyledRecipeImage src={defaultImg} />
+      )}
       <StyledTitleWrapper>
         {link !== "" ? (
-          <StyledLink href={link} rel="noopener noreferrer" target="_blank">
+          <StyledLink rel="noopener noreferrer" target="_blank" href={link}>
             <StyledRecipeTitle>{name}</StyledRecipeTitle>
           </StyledLink>
         ) : (
-            <StyledRecipeTitle>{name}</StyledRecipeTitle>
-          )}
+          <StyledRecipeTitle>{name}</StyledRecipeTitle>
+        )}
         {link !== "" ? (
           <StyledRemoveButton
             primary
@@ -96,13 +96,13 @@ const MealCard = ({ name, img, link, date, type }) => {
             <FontAwesomeIcon icon={faTrash} />
           </StyledRemoveButton>
         ) : (
-            <StyledRemoveButton
-              type="button"
-              onClick={() => removeCard(date, type)}
-            >
-              <FontAwesomeIcon icon={faTrash} />
-            </StyledRemoveButton>
-          )}
+          <StyledRemoveButton
+            type="button"
+            onClick={() => removeCard(date, type)}
+          >
+            <FontAwesomeIcon icon={faTrash} />
+          </StyledRemoveButton>
+        )}
         <StyledEditButton type="button" onClick={() => openModal(date, type)}>
           <FontAwesomeIcon icon={faPenAlt} />
         </StyledEditButton>

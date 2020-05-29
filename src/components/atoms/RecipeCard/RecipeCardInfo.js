@@ -5,11 +5,12 @@ import {
   faClock,
   faBookOpen,
   faUserFriends,
+  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import Button from "../Button/Button";
 import "./RecipeCard.css";
 import { useDispatch } from "react-redux";
-import { openModal } from "../../../actions";
+import { openModal, removeRecipe } from "../../../actions";
 
 const StyledRecipeTitle = styled.h2`
   position: relative;
@@ -50,6 +51,19 @@ const StyledAccount = styled.p`
   grid-column: 1/3;
   grid-row-start: 2;
 `;
+const StyledRemoveButton = styled.button`
+  height: 30px;
+  font-size: 14px;
+  cursor: pointer;
+  text-transform: uppercase;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  background: rgb(242, 162, 44);
+  z-index: 16;
+  position: relative;
+`;
+
 const RecipeCardInfo = ({
   ingredientsQuantity,
   portion,
@@ -61,6 +75,10 @@ const RecipeCardInfo = ({
   const handleAddClick = (recipe) => {
     dispatch(openModal(recipe));
   };
+  const handleRemoveClick = (recipe) => {
+    dispatch(removeRecipe(recipe));
+  };
+
   return (
     <div className="RecipeCardInfo">
       <StyledRecipeTitle> {title} </StyledRecipeTitle>
@@ -85,6 +103,12 @@ const RecipeCardInfo = ({
         <Button secondary onClick={() => handleAddClick(recipe)}>
           Zobacz przepis
         </Button>
+        <StyledRemoveButton
+          type="button"
+          onClick={() => handleRemoveClick(recipe)}
+        >
+          <FontAwesomeIcon icon={faTrash} />
+        </StyledRemoveButton>
       </StyledOpenTable>
     </div>
   );

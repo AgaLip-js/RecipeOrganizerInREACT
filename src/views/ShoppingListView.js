@@ -92,6 +92,7 @@ const StyledRemoveButton = styled.button`
   background: rgb(242, 162, 44);
   z-index: 11;
   display: flex;
+  align-items: center;
 `;
 const StyledInput = styled.input`
   font-size: 14px;

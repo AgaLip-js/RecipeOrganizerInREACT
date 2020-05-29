@@ -7,6 +7,7 @@ import {
   OPEN_MINI_MODAL,
   REMOVE_MEAL,
   EDIT_RECIPE,
+  REMOVE_RECIPE,
 } from "../actions";
 import { initialRecipies } from "../models/initialRecipies";
 
@@ -79,6 +80,19 @@ const mainReducer = (state = initialState, action) => {
         }),
       };
     }
+    case REMOVE_RECIPE: {
+      return {
+        ...state,
+        recipies: state.recipies.map((recipe) => {
+          if (recipe.id === action.payload.removeRecipe.id) {
+            return false;
+          } else {
+            return recipe;
+          }
+        }),
+      };
+    }
+
     case REMOVE_MEAL: {
       const pday = state.mealPlannerData.map((day) => {
         if (day.date === action.payload.date) {

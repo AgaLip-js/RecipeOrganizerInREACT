@@ -6,6 +6,7 @@ export const CLOSE_MINI_MODAL = "CLOSE_MINI_MODAL";
 export const OPEN_MINI_MODAL = "OPEN_MINI_MODAL";
 export const REMOVE_MEAL = "REMOVE_MEAL";
 export const EDIT_RECIPE = "EDIT_RECIPE";
+export const REMOVE_RECIPE = "REMOVE_RECIPE";
 
 export const openModal = (recipe) => (dispatch) => {
   dispatch({
@@ -37,6 +38,14 @@ export const editRecipe = (editItem) => (dispatch) => {
     type: EDIT_RECIPE,
     payload: {
       newRecipe: editItem,
+    },
+  });
+};
+export const removeRecipe = (removeItem) => (dispatch) => {
+  dispatch({
+    type: REMOVE_RECIPE,
+    payload: {
+      removeRecipe: removeItem,
     },
   });
 };

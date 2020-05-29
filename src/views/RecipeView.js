@@ -35,19 +35,22 @@ const RecipeView = () => {
       <Header />
       <SimpleSlider />
       <StyledContainer>
-        {recipies.map((recipe) => (
-          <RecipeCard
-            image={recipe.image}
-            ingredientsQuantity={recipe.ingredientsQuantity}
-            portion={recipe.portion}
-            preparingTime={recipe.preparingTime}
-            title={recipe.title}
-            date={recipe.date}
-            id={recipe.id}
-            key={recipe.id}
-            recipe={recipe}
-          />
-        ))}
+        {recipies.map(
+          (recipe) =>
+            recipe && (
+              <RecipeCard
+                image={recipe.image}
+                ingredientsQuantity={recipe.ingredientsQuantity}
+                portion={recipe.portion}
+                preparingTime={recipe.preparingTime}
+                title={recipe.title}
+                date={recipe.date}
+                id={recipe.id}
+                key={recipe.id}
+                recipe={recipe}
+              />
+            )
+        )}
       </StyledContainer>
       {open && <Modal />}
     </div>
